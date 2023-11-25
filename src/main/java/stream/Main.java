@@ -9,13 +9,15 @@ public class Main {
     public static void main(String[] args) {
        // List<Personne[]>couples =couplesFHPossibles();
        // couples.forEach(couple->System.out.println("("+couple[0]+","+couple[1]+")"));
-        List<String> motsToTest = Arrays.asList("code","anagram","mrgaana","edoc", "anagrmm");
+  /*      List<String> motsToTest = Arrays.asList("code","anagram","mrgaana","edoc", "anagrmm");
         System.out.println("Version V2");
         List<String> motsSansDoublons = removeAnagramsV2(motsToTest);
         motsSansDoublons.forEach(System.out::println);
         System.out.println("Version V1");
         motsSansDoublons = removeAnagramsV1(motsToTest);
-        motsSansDoublons.forEach(System.out::println);
+        motsSansDoublons.forEach(System.out::println);*/
+        List<String>  motsATester = Arrays.asList("tot","code","pomme","tenet","bob","anna","salas");
+        motsATester.stream().filter(Main::checkPalindrome).forEach(System.out::println);
     }
 /*
 on veut retirer de la liste de mots en entrée, les anagrammes , c'est à dire tous les mots ayant le même nombre de lettres
@@ -59,6 +61,15 @@ qu'un mot déjà existant et ayant toutes ses lettres dans le mots existant et e
         return result;
     }
 
+    public static boolean checkPalindrome(String mot)
+    {
+        boolean isPalindrome = true;
+        for (int i=0;i<mot.length()/2 && isPalindrome && i != mot.length()-1-i;i++)
+        {
+            isPalindrome = mot.charAt(i) == mot.charAt(mot.length()-1-i);
+        }
+        return isPalindrome;
+    }
     public static boolean checkAnagrams(String word1, String word2)
     {
         boolean isAnagram =word1.length() == word2.length();
